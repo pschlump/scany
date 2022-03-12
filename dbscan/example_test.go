@@ -3,8 +3,10 @@ package dbscan_test
 import (
 	"strings"
 
-	"github.com/georgysavva/scany/dbscan"
+	"github.com/pschlump/scany/dbscan"
 )
+
+// "github.com/georgysavva/scany/dbscan"
 
 func ExampleScanAll() {
 	type User struct {

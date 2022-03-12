@@ -14,8 +14,10 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/georgysavva/scany/sqlscan"
+	"github.com/pschlump/scany/sqlscan"
 )
+
+//	"github.com/georgysavva/scany/sqlscan"
 
 var (
 	testDB  *sql.DB

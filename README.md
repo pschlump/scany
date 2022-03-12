@@ -6,6 +6,10 @@
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/georgysavva/scany)](https://pkg.go.dev/github.com/georgysavva/scany)
 [![Mentioned in Awesome Go](https://awesome.re/mentioned-badge.svg)](https://github.com/avelino/awesome-go)  
 
+## PJS Note
+
+Forked from the original to test a defect fix.
+
 ## Overview
 
 Go favors simplicity, and it's pretty common to work with a database via driver directly without any ORM. It provides

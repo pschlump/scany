@@ -4,11 +4,12 @@ import (
 	"strings"
 
 	"github.com/jackc/pgx/v4/pgxpool"
-
-	"github.com/georgysavva/scany/dbscan"
-
-	"github.com/georgysavva/scany/pgxscan"
+	"github.com/pschlump/scany/dbscan"
+	"github.com/pschlump/scany/pgxscan"
 )
+
+// "github.com/georgysavva/scany/dbscan"
+// "github.com/georgysavva/scany/pgxscan"
 
 func ExampleSelect() {
 	type User struct {

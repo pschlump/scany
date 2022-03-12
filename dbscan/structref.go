@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+// PJS xyzzy00001 - - issue 1 - need case insensitive match, not just map-lookup
+
 type toTraverse struct {
 	Type         reflect.Type
 	IndexPrefix  []int
@@ -46,6 +48,13 @@ func (api *API) getColumnToFieldIndexMap(structType reflect.Type) map[string][]i
 			}
 			if !field.Anonymous {
 				column := api.buildColumn(traversal.ColumnPrefix, columnPart)
+
+				// PJS - Allows matching of Id to the database "id" column.  Since database is case insensitive the Go column that will always start with uppercase will never match.
+				// PJS xyzzy00001 - - issue 1 - need case insensitive match, not just map-lookup
+				// Sat Mar 12 05:46:58 MST 2022
+				if !dbTagPresent {
+					column = strings.ToLower(column)
+				}
 
 				if _, exists := result[column]; !exists {
 					result[column] = index

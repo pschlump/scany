@@ -9,8 +9,10 @@ import (
 	"github.com/jackc/pgx/v4/pgxpool"
 	"github.com/pkg/errors"
 
-	"github.com/georgysavva/scany/dbscan"
+	"github.com/pschlump/scany/dbscan"
 )
+
+// "github.com/georgysavva/scany/dbscan"
 
 // Querier is something that pgxscan can query and get the pgx.Rows from.
 // For example, it can be: *pgxpool.Pool, *pgx.Conn or pgx.Tx.

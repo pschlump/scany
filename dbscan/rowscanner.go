@@ -2,9 +2,12 @@ package dbscan
 
 import (
 	"reflect"
+	"strings"
 
 	"github.com/pkg/errors"
 )
+
+// PJS xyzzy00001 - - issue 1 - need case insensitive match, not just map-lookup
 
 type startScannerFunc func(rs *RowScanner, dstValue reflect.Value) error
 
@@ -123,12 +126,19 @@ func startScanner(rs *RowScanner, dstValue reflect.Value) error {
 func (rs *RowScanner) scanStruct(structValue reflect.Value) error {
 	scans := make([]interface{}, len(rs.columns))
 	for i, column := range rs.columns {
-		fieldIndex, ok := rs.columnToFieldIndex[column]
+		fieldIndex, ok := rs.columnToFieldIndex[column] // PJS xyzzy00001 - - issue 1 - need case insensitive match, not just map-lookup
+
 		if !ok {
-			return errors.Errorf(
-				"scany: column: '%s': no corresponding field found, or it's unexported in %v",
-				column, structValue.Type(),
-			)
+			// Try a lower case version of the column.
+			column = strings.ToLower(column)
+			fieldIndex, ok = rs.columnToFieldIndex[column]
+
+			if !ok {
+				return errors.Errorf(
+					"scany: column: '%s': no corresponding field found, or it's unexported in %v",
+					column, structValue.Type(),
+				)
+			}
 		}
 		// Struct may contain embedded structs by ptr that defaults to nil.
 		// In order to scan values into a nested field,

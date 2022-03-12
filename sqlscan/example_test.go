@@ -4,9 +4,12 @@ import (
 	"database/sql"
 	"strings"
 
-	"github.com/georgysavva/scany/dbscan"
-	"github.com/georgysavva/scany/sqlscan"
+	"github.com/pschlump/scany/dbscan"
+	"github.com/pschlump/scany/sqlscan"
 )
+
+//	"github.com/georgysavva/scany/dbscan"
+//	"github.com/georgysavva/scany/sqlscan"
 
 func ExampleSelect() {
 	type User struct {
